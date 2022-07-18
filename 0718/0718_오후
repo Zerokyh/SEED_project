@@ -1,0 +1,39 @@
+개인 일정 :
+
+기술적용
+
+navigation
+https://github.com/locusrobotics/robot_navigation/tree/melodic
+
+LiDAR Obstacle avoiding robot
+https://github.com/Rad-hi/Obstacle-Avoidance-ROS
+https://github.com/saahu27/custom_controller_obstacle_avoidance_using_Lidar
+https://github.com/Neebali/obstacle-avoidance/blob/main/obstacle_avoidance.py
+https://github.com/tysik/obstacle_detector
+
+라즈베리파이 OS설치 및 ROS설치 - 일
+FLASK 웹 응용 프레임워크 이용하여 GUI환경 구성 - 일
+RC카에 GUI로 조작되는지 테스트 - 일
+시뮬레이션으로 SLAM 및 Navigation 적용 - 일
+RC카에 Camera, Lidar 센서 적용 - 일
+RC카에 SLAM 및  Navigation적용 - 일
+시뮬레이션으로 LiDAR기반 Obstacle avoiding 기술 적용 - 일
+RC카에 LiDAR기반 Obstacle avoiding 기술 적용 - 일
+
+[일정]
+rc카 재료 주문, 피드백 받은 부분 업데이트
+시뮬레이션(개인 기술 조사 및 전체 기술 병합 과정)
+RC카 test
+Kobuki test
+
+
+[예산]
+300,000
+
+개인일정
+
+HW/SW 아키텍쳐
+
+개인 기술 조사
+
+
