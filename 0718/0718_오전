@@ -1,0 +1,45 @@
+AMR의 필요성
+
+https://www.mobile-industrial-robots.com/ko/mir/amr-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/agv%EC%99%80-amr%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8B%A4%EB%A5%B8%EA%B0%80%EC%9A%94/
+
+​
+
+[HW]
+
+Kobuki Anatomy
+
+https://iclebo-kobuki.readthedocs.io/en/latest/anatomy.html
+
+​
+
+Kobuki 플레이트 구매 사이트
+
+http://www.iclebo.com/shop/shopbrand.html?type=M&xcode=001&mcode=001
+
+​
+
+Kobuki
+
+http://wiki.ros.org/kobuki_node
+
+https://github.com/yujinrobot/kobuki
+
+https://github.com/yujinrobot/kobuki_core/tree/melodic
+
+​
+
+[SW]
+
+navigation
+
+https://github.com/locusrobotics/robot_navigation/tree/melodic
+
+​
+
+Lidar & Camera fusion(nvidia 의 jetson  사용으로 일단 보류)
+
+https://github.com/ankitdhall/lidar_camera_calibration
+
+https://gnaseel.tistory.com/39
+
+​
