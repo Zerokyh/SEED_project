@@ -1,0 +1,64 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>FOLLOW MODE</title>
+    <meta name="viewport" content="width=200, initial-scale=1, maximum-scale=1">
+    <style>
+        div.left{
+            width:50%;
+            float:left;
+        }
+        div.right{
+            width:50%;
+            float:right;
+        }
+        div.top{
+            height:15%;
+            float:top;
+        }
+        div.middle{
+            height:70%;
+            float:middle;
+        }
+        div.bottom{
+            height:15%;
+            float:bottom;
+        }
+    </style>
+    <script type="text/javascript">
+        function command(value){
+            if(window.XMLHttpRequest){
+                request = new XMLHttpRequest();
+            }
+            if(!request){
+                alert("XMLHttpRequest Error");
+                return false;
+            }
+            var send = 'command=' + value;
+            request.open('POST','navi',true);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.setRequestHeader('Content-Length', send.length);
+            request.setRequestHeader('Connection', 'close');
+            request.send(send);
+        }
+    </script>
+</head>
+<body>
+    <div class="left" align="right">
+        <div class="top"></div>
+        <div class="middle">
+        <img src="stream" width="560" height="480" id="stream" />
+        </div>
+        <div class="bottom"></div>
+    </div>
+    <div class="right" align="left">
+        <div class="middle">
+            <ul style=font-size:32pt;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;조작키</ul>
+            <ul><input type="button" style=font-size:48pt;width:300px;height:100px; value="FOLLOW" onClick="command('DRIVING MODE')"></ul>
+            <ul><input type="button" style=font-size:48pt;width:300px;height:100px;color:#FF0000; value="STOP" onClick="command('STOP')"></ul>
+            <ul><input type="button" style=font-size:48pt;width:300px;height:100px; value="모드변경" onClick="history.back();"></ul>
+            <ul><input type="button" style=font-size:48pt;width:300px;height:100px; value="작업종료" onClick="command('RESET')"></ul>
+        </div>
+    </div>
+</body>
+</html>

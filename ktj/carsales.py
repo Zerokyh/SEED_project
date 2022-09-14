@@ -90,10 +90,8 @@ db = mysql.connector.connect(
 #     return render_template("carsales.html", cars = cars,add=add)
 
 ab=""
+ac=""
 
-
-
-    
 @app.route('/qrdb', methods=['POST'])
 def dbt():
     cursor = db.cursor(buffered=True)
@@ -102,6 +100,7 @@ def dbt():
     global x
     global ab
     global id
+    global ac
     abc=cursor.fetchall()
     # p = pool(initializer=init)
     command=request.form.get('command')
@@ -124,12 +123,21 @@ def dbt():
     elif command == "id_1-1":
         id = 1
         ab=abc[0][1]
+        if abc[0][4] < abc[0][3]:
+            ac="%s의 재고가 부족합니다" %ab
+        else: ac=""
     elif command == "id_1-2":
         id=2
         ab=abc[1][1]
+        if abc[1][4] < abc[1][3]:
+            ac="%s의 재고가 부족합니다" %ab
+        else: ac=""
     elif command == "id_1-3":
         id=3
         ab=abc[2][1]
+        if abc[2][4] < abc[2][3]:
+            ac="%s의 재고가 부족합니다" %ab
+        else: ac=""
         # cursor.execute(up_sql,aa)
     elif command == '입고':
         # conn = connection()
@@ -173,6 +181,7 @@ def main():
     cursor.execute("SELECT * FROM product")
     for row in cursor.fetchall():
         cars.append({"id": row[0], "제품명": row[1], "좌표": row[2], "안전재고": row[3], "재고량": row[4], "생성일시": row[5]})
+        # print(row[4])
     # db.close()
     # if command == "id_1-1":
     #     id = '1'
@@ -185,7 +194,7 @@ def main():
     #     id='3'
     #     ab=cursor[2][1]
     acc=ab
-    return render_template("carsales.html", cars = cars, acc=acc)
+    return render_template("carsales.html", cars = cars, acc=acc, ac=ac)
 
 if(__name__ == "__main__"):
     app.run()

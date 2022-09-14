@@ -1,0 +1,324 @@
+<html>
+<html lang="en-US" dir="ltr">
+<!--<head>
+    <meta charset="utf-8">
+    <title>dddd</title>
+</head>
+!-->
+<head>
+    <meta charset="UTF-8">
+    <title>DB</title>
+    <meta name="viewport" content="width=200, initial-scale=1, maximum-scale=1">
+        <META HTTP-EQUIV="Expires" CONTENT="-1">
+        <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+        <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        #aradio444{
+            display:inline-block; 
+        }
+
+    </style>
+    <style type="text/css">
+      p{
+        color:red;
+      }
+    </style>
+    <style>
+        div.bbb{
+            position: relative;
+            top:0px;
+        }
+		div.static {
+			border: 2px solid #B8860B;
+			position: static;
+		}
+		div.relative1 {
+			position: relative;
+			top: 93px;
+		}
+        div.relative2 {
+			position: relative;
+			top: 103px;
+		}
+        div.relative3 {
+			position: relative;
+			top: 117px;
+		}
+	</style>
+    <style>
+        div.left{
+            width:50%;
+            float:left;
+        }
+        div.right{
+            width:50%;
+            float:right;
+        }
+        div.total_left{
+            width:48%;
+            float:left;
+        }
+        div.total_right{
+            width:48%;
+            float:right;
+        }
+        div.top{
+            height:10%;
+            float:top;
+        }
+        div.middle{
+            height:70%;
+            float:middle;
+        }
+        div.bottom{
+            height:20%;
+            float:bottom;
+        }
+    </style>
+    <script type="text/javascript">
+        function command(value){
+            if(window.XMLHttpRequest){
+                request = new XMLHttpRequest();
+            }
+            if(!request){
+                alert("XMLHttpRequest Error");
+                return false;
+            }
+            var send = 'command=' + value;
+            request.open('POST','qrdb',true);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.setRequestHeader('Content-Length', send.length);
+            request.setRequestHeader('Connection', 'close');
+            request.send(send);
+        }
+    </script>
+        <script type="text/javascript">
+            var is_action = false;
+            function changeFunc(selectedValue){
+                if (is_action === true) { return false; }
+                is_action = true;
+                
+                if(window.XMLHttpRequest){
+                    request = new XMLHttpRequest();
+                }
+                if(!request){
+                    alert("XMLHttpRequest Error");
+                    return false;
+                }
+            var selectBox = document.getElementById("number_select");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            var select = 'command=' + selectedValue;
+            var sel = selectedValue;
+            request.open('POST','qrdb',true);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.setRequestHeader('Content-Length', select.length);
+            request.setRequestHeader('Connection', 'close');
+            request.send(select);
+            
+            document.getElementById("itema").value = "{{acc}}"+"   "+ selectedValue +"개 입고 되었음"+document.getElementById("itema").value
+            document.getElementById("item").value = "{{acc}}"+"   "+ selectedValue +"개 출고 되었음"+ document.getElementById("item").value
+
+        }  
+        </script>
+</head>
+<body>
+     <div class="total_left" align="right" style="padding:10px;">
+            <div class="top"></div>
+            <fieldset style="width:80%;height:72%;">
+            <legend style="font-size:24px;">카메라 출력</legend>
+            <div class="middle">
+                <center><img src="stream" width="560" height="480" id="stream" /></center>
+            </div>
+            </fieldset>
+            <div class="bottom"></div>
+    </div>
+
+    <form action='' id="gg">
+        <input type='submit'style= width:150px;height:70px; value='입고' onclick="command('입고')">
+        <input type="hidden" id="itema" value=  >
+    </form>
+
+    <form action='' id ="cc">
+        <input type='submit'style= width:150px;height:70px; value='출고' onclick="command('출고')">
+        <input type="hidden" id="item" value= >
+    </form>
+
+        <br>
+        <label for="pet-select">Choose a number:</label>
+        <select name="number" id="number_select" onclick="changeFunc()">
+            <option value="">--Please choose an number--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+<br><br>
+
+<div class="bbb">
+    <div class="relative1">
+                <td><input type="radio" name="1" id="id_1-1" value="1"onclick="command('id_1-1')"style="top:30px"><label></td><br></div>
+    <div class="relative2">
+                <td><input type="radio" name="1" id="id_1-2" value="2"onclick="command('id_1-2')"style="top:30px"><label></label></td></div>
+    <div class="relative3">
+                <td><input type="radio" name="1" id="id_1-3" value="3"onclick="command('id_1-3')"style="top:30px"><label></label></td></div>
+</div>
+
+
+<div>
+<table id="tb" class="table" border="3" style="padding-left:30;">
+    <thead>
+        <tr>
+        <th scope="col">ID</th>
+        <th scope="col">제품명</th>
+        <th scope="col">좌표</th>
+        <th scope="col">안전재고</th>
+        <th scope="col">재고량</th>
+        <th scope="col">생성일시</th>
+        </tr>
+    </thead>
+    <tbody>
+       {% for car in cars %}
+            <tr>
+                <td>{{ car.id }}</td>
+                <td>{{ car.제품명 }}</td>
+                <td>{{ car.좌표 }}</td>
+                <td>{{ car.안전재고 }}</td>
+                <td>{{ car.재고량 }}</td>
+                <td>{{ car.생성일시 }}</td>
+            </tr>
+        
+        {% endfor %} 
+    </tbody>
+</table>
+</div>
+<div class="bottom" style="overflow:scroll; width:500px; height:150px;">
+    <ul id = "aa">
+        
+    </ul>
+</div>
+<script>
+    //document.getElementById("ic").addEventListener("click", () =>{
+    //    document.getElementById("uu")text += "JavaScript";
+    //});
+</script>
+<body>
+
+    <div class="small-container">
+  
+      <form>
+
+        </form>
+
+  
+        <button id ="bt" onClick="window.location.reload()">Clear All</button>
+    </div>
+    <script>
+        const form = document.querySelector('#gg');
+        const ul = document.querySelector('#aa');
+        const button = document.querySelector('#bt');
+        const input = document.getElementById('itema');
+        let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+        
+
+        var d = new Date();
+        
+        // Set the value of the "date" field
+        document.getElementById("itema").value += " "+d.toLocaleDateString('ko-KR');
+    
+        // Set the value of the "time" field
+        var hours = d.getHours();
+        var mins = d.getMinutes();
+        var seconds = d.getSeconds();
+        document.getElementById("itema").value += " "+hours + ":" + mins + ":" + seconds;
+
+        
+
+        localStorage.setItem('items', JSON.stringify(itemsArray));
+        const data = JSON.parse(localStorage.getItem('items'));
+        
+        const liMaker = (text) => {
+          const li = document.createElement('li');
+          li.textContent = text
+          ul.prepend(li);
+        }
+        
+        form.addEventListener('submit', function () {
+        if("{{ac}}" == ""){
+            itemArray.push(input.value);
+        }
+        else
+        {
+            itemArray.push(input.value,"{{ac}}");
+        }
+            localStorage.setItem('items', JSON.stringify(itemArray));
+            liMaker(input.value);
+            input.value = ""
+        
+        });
+        
+        data.forEach(itema => {
+          liMaker(itema);
+        });
+       
+        
+        button.addEventListener('click', function () {
+          localStorage.clear();
+          while (ul.firstChild) {
+            ul.removeChild(ul.firstChild);
+          }
+        });
+        </script>
+        <script>
+            const form1 = document.querySelector('#cc');
+            const ul1 = document.querySelector('#aa');
+            const button1 = document.querySelector('#bt');
+            const input1 = document.getElementById('item');
+            let itemArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+
+            var d = new Date();
+        
+            // Set the value of the "date" field
+            document.getElementById("item").value += " "+d.toLocaleDateString('ko-KR');
+        
+            // Set the value of the "time" field
+            var hours = d.getHours();
+            var mins = d.getMinutes();
+            var seconds = d.getSeconds();
+            document.getElementById("item").value += " "+hours + ":" + mins + ":" + seconds;
+    
+            localStorage.setItem('items', JSON.stringify(itemArray));
+            const data1 = JSON.parse(localStorage.getItem('items'));
+            
+            const liMaker1 = (text) => {
+              const li = document.createElement('li');
+              li.textContent = text
+              ul1.prepend(li);
+            }
+            
+            form1.addEventListener('submit', function () {
+              if("{{ac}}" == ""){
+                itemArray.push(input1.value);
+              }
+              else
+                {
+                    itemArray.push(input1.value,"{{ac}}");
+                }
+                    localStorage.setItem('items', JSON.stringify(itemArray));
+                    liMaker1(input1.value);
+                    input1.value = ""
+            });
+            
+            
+            button.addEventListener('click', function () {
+              localStorage.clear();
+              while (ul1.firstChild) {
+                ul1.removeChild(ul1.firstChild);
+              }
+            });
+            </script>
+  </body>
+</body>
+</html>
