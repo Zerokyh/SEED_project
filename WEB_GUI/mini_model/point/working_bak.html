@@ -1,0 +1,106 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WORKING MODE</title>
+    <meta name="viewport" content="width=200, initial-scale=1, maximum-scale=1">
+    <style>
+        div.left{
+            width:50%;
+            float:left;
+        }
+        div.right{
+            width:50%;
+            float:right;
+        }
+        div.total_left{
+            width:48%;
+            float:left;
+        }
+        div.total_right{
+            width:48%;
+            float:right;
+        }
+        div.top{
+            height:10%;
+            float:top;
+        }
+        div.middle{
+            height:70%;
+            float:middle;
+        }
+        div.bottom{
+            height:20%;
+            float:bottom;
+        }
+    </style>
+    <script type="text/javascript">
+        function command(value){
+            if(window.XMLHttpRequest){
+                request = new XMLHttpRequest();
+            }
+            if(!request){
+                alert("XMLHttpRequest Error");
+                return false;
+            }
+            var send = 'command=' + value;
+            request.open('POST','navi',true);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.setRequestHeader('Content-Length', send.length);
+            request.setRequestHeader('Connection', 'close');
+            request.send(send);
+        }        
+    </script>
+</head>
+<body>
+    <div class="total_left" align="right" style="padding:10px;">
+        <div class="top"></div>
+        <fieldset style="width:80%;height:72%;">
+        <legend style="font-size:24px;">카메라 출력</legend>
+        <div class="middle">
+            <center><img src="stream" width="560" height="480" id="stream" /></center>
+            <ul style=text-align:center;font-size:32pt;>{{point}}</ul>
+        </div>
+        </fieldset>
+        <div class="bottom"></div>
+    </div>
+
+    <div class="total_right" style="padding:10px;">
+        <div class="top"></div>
+        <fieldset style="width:70%;height:72%;padding:0px 90px 20px 20px;">
+        <legend style="font-size:24px;">CONTROL</legend>
+        <div class="middle">
+            <div class="left" align="center" >
+                <label style=text-align:center;font-size:24pt;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;상·하차 장소</label>
+                <ul> 
+                    <input type="button" style=font-size:36pt;width:150px;height:70px;margin:7px;padding:5px; value="P1" onClick="command('P1')">
+                    <input type="button" style=font-size:36pt;width:150px;height:70px;margin:7px;padding:5px; value="P2" onClick="command('P2')">
+                    <input type="button" style=font-size:36pt;width:150px;height:70px;margin:7px;padding:5px; value="P3" onClick="command('P3')">
+                </ul>
+                
+                <label style=text-align:center;font-size:24pt;>&nbsp;&nbsp;&nbsp;물건 배치 장소</label>
+                <ul>
+                    <input type="button" style=font-size:36pt;width:150px;height:70px;margin:7px;padding:5px; value="A1" onClick="command('A1')">
+                    <input type="button" style=font-size:36pt;width:150px;height:70px;margin:7px;padding:5px; value="A2" onClick="command('A2')">
+                    <input type="button" style=font-size:36pt;width:150px;height:70px;margin:7px;padding:5px; value="A3" onClick="command('A3')">
+                </ul>
+            </div>
+            <div class="right" align="center">
+                <label style=font-size:24pt;>&nbsp;&nbsp;&nbsp;QR 코드</label>
+                <ul>
+                    <input type="button" style=font-size:36pt;width:200px;height:80px; value="QR 저장" onClick="command('QR')">
+                </ul>
+                <ul>&nbsp;</ul>
+                <label style=text-align:center;font-size:24pt;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;조작키</label>
+                <ul>
+                    <input type="button" style=font-size:36pt;width:200px;height:80px;margin:10px; value="GO" onClick="command('GO')">
+                    <input type="button" style=font-size:36pt;width:200px;height:80px;margin:10px;color:#FF0000; value="STOP" onClick="command('STOP')">
+                    <input type="button" style=font-size:36pt;width:200px;height:80px;margin:10px; value="모드변경" onClick="history.back();">
+                    <input type="button" style=font-size:36pt;width:200px;height:80px;margin:10px; value="작업종료" onClick="command('RESET')">
+                </ul>
+            </div>
+        </div>
+        </fieldset>
+        <div class="bottom"></div>
+    </div>
+</body>
+</html>

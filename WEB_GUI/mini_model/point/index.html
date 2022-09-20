@@ -1,0 +1,75 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>RC Car Controller</title>
+    <meta name="viewport" content="width=200, initial-scale=1, maximum-scale=1">
+    <style>
+        div.top{
+            height:10%;
+            float:top;
+        }
+        div.middle{
+            height:40%;
+            float:middle;
+        }
+        div.bottom{
+            height:30%;
+            float:bottom;
+        }
+        div.left{
+            width:33.3%;
+            float:left;
+        }
+        div.center{
+            width:33.3%;
+        }
+        div.right{
+            width:33.3%;
+            float:right;
+        }
+    </style>
+    <script type="text/javascript">
+        function command(value){
+            if(window.XMLHttpRequest){
+                request = new XMLHttpRequest();
+            }
+            if(!request){
+                alert("XMLHttpRequest Error");
+                return false;
+            }
+            var send = 'command=' + value;
+            request.open('POST','motor',true);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.setRequestHeader('Content-Length', send.length);
+            request.setRequestHeader('Connection', 'close');
+            request.send(send);
+        }
+    </script>
+</head>
+<body>
+    <div class="top"></div>
+    <div class="middle" align="center" style="margin: 0 0 10px 10px;">
+        <div class="left"></div>
+        <div align="center" class="center">
+            <fieldset style="width:55%;padding:20px 60px 20px 20px;">
+            <legend align="center" style="font-size:24px;">RC CAR CONTROL</legend>
+                <img src="stream" width="560" height="480" id="stream" />
+                <div align="center" style="margin: 0 0 10px 10px;">
+                <ul>
+                    <input type="button" style=font-size:20pt;width:70px;height:60px value="&uarr;" onClick="command('GO')">
+                </ul>
+                <ul>
+                    <input type="button" style=font-size:20pt;width:70px;height:60px value="&larr;" onClick="command('LEFT')">
+                    <input type="button" style=font-size:20pt;width:70px;height:60px value="X" onClick="command('STOP')">
+                    <input type="button" style=font-size:20pt;width:70px;height:60px value="&rarr;" onClick="command('RIGHT')">
+                </ul>
+                <ul>
+                    <input type="button" style=font-size:20pt;width:70px;height:60px value="&darr;" onClick="command('BACK')">
+                </ul>
+            </fieldset>
+        </div>
+        <div class="right"></div>
+    </div>
+    <div class="bottom"></div>
+</body>
+</html>

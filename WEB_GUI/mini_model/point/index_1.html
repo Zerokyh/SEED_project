@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>RC Car Controller 1</title>
+    <meta name="viewport" content="width=200, initial-scale=1, maximum-scale=1">
+    <style>
+        div{
+            width:100%;
+            height:100%;
+        }
+        div.top{
+            height:33.3%;
+            float:top;
+        }
+        div.middle{
+            height:33.3%;
+            float:middle;
+        }
+        div.bottom{
+            height:33.3%;
+            float:bottom;
+        }
+    </style>
+
+    <!-- <script type="text/javascript">
+        function command(value){
+            if(window.XMLHttpRequest){
+                request = new XMLHttpRequest();
+            }
+            if(!request){
+                alert("XMLHttpRequest Error");
+                return false;
+            }
+            var send = 'command=' + value;
+            request.open('POST','motor',true);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.setRequestHeader('Content-Length', send.length);
+            request.setRequestHeader('Connection', 'close');
+            request.send(send);
+        }
+    </script> -->
+</head>
+<body>
+    <div class="top">
+    </div>
+    <div class="middle" align="center" style="margin: 0 0 10px 10px;">
+        <ul>
+            <input type="button" style=font-size:48pt;width:60%;height:50%; value="WORKING MODE" onClick="window.location.href='/working'">
+        </ul>
+        <ul>
+            <input type="button" style=font-size:48pt;width:60%;height:50%; value="FOLLOW MODE" onClick="window.location.href='/follow'">
+        </ul>
+        <ul>
+            <input type="button" style=font-size:48pt;width:60%;height:50%; value="재고관리" onClick="window.location.href='/carsales'">
+        </ul>
+    </div>
+    <div class="bottom">
+    </div>
+</body>
+</html>

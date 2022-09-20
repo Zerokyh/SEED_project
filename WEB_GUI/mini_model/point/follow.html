@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>FOLLOW MODE</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <style>
+        div.left{
+            width:50%;
+            float:left;
+        }
+        div.right{
+            width:50%;
+            float:right;
+        }
+        div.total_left{
+            width:48%;
+            float:left;
+        }
+        div.total_right{
+            width:48%;
+            float:right;
+        }
+        div.top{
+            height:15%;
+            float:top;
+        }
+        div.middle{
+            height:70%;
+            float:middle;
+        }
+        div.bottom{
+            height:15%;
+            float:bottom;
+        }
+    </style>
+    <script type="text/javascript">
+        function command(value){
+            if(window.XMLHttpRequest){
+                request = new XMLHttpRequest();
+            }
+            if(!request){
+                alert("XMLHttpRequest Error");
+                return false;
+            }
+            var send = 'command=' + value;
+            request.open('POST','navi',true);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.setRequestHeader('Content-Length', send.length);
+            request.setRequestHeader('Connection', 'close');
+            request.send(send);
+        }
+    </script>
+</head>
+<body>
+    <div class="total_left" align="right" style="padding:10px;">
+        <div class="top"></div>
+        <fieldset style="width:80%;height:56%;padding:20px 10px 0px 0px;">
+        <legend style="font-size:24px;">카메라 출력</legend>
+        <div class="middle">
+            <center><img src="stream" width="560" height="480" id="stream" /></center>
+        </div>
+        </fieldset>
+        <div class="bottom"></div>
+    </div>
+    <div class="total_right" style="padding:10px;">
+        <div class="top"></div>
+        <fieldset style="width:40%;height:56%;padding:20px 50px 0px 20px;">
+        <legend style="font-size:24px;">CONTROL</legend>
+        <div class="middle" align="center">
+            <ul><input type="button" style=font-size:48pt;width:300px;height:100px; value="FOLLOW" onClick="command('FOLLOW')"></ul>
+            <ul><input type="button" style=font-size:48pt;width:300px;height:100px;color:#FF0000; value="STOP" onClick="command('STOP')"></ul>
+            <ul><input type="button" style=font-size:36pt;width:300px;height:100px; value="모드변경" onClick="history.back();"></ul>
+            <ul><input type="button" style=font-size:36pt;width:300px;height:100px; value="작업종료" onClick="command('RESET')"></ul>
+        </div>
+        </fieldset>
+        <div class="bottom"></div>
+    </div>
+</body>
+</html>

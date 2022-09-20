@@ -1,0 +1,7 @@
+<launch>    
+  <arg name="stop_time_delay" value="1.0" />
+  <arg name="check_frequency" value="2.0" />
+    
+  <node pkg="stop_robot" type="stop_robot" name="stop_robot" required="true" output="screen">
+  </node>
+</launch>

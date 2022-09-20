@@ -1,0 +1,7 @@
+<launch>    
+  <arg name="stop_time_delay" value="1.0" />
+  <arg name="check_frequency" value="2.0" />
+    
+  <node pkg="emergency_stop" type="emergency_stop" name="stop" output="screen">
+  </node>
+</launch>
